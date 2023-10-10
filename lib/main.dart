@@ -46,8 +46,29 @@ class _MainScreenState extends State<MainScreen> {
               Container(
                 color: Colors.red,
                 height: 100,
-                child: Row(
-                  children: [],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: const Text(
+                          'MyOnlineShop',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(
+                        child: const Icon(
+                          Icons.menu,
+                          size: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
