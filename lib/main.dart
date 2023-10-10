@@ -35,6 +35,25 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
-    return const Scaffold();
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          width: width,
+          height: height,
+          color: Colors.white,
+          child: ListView(
+            children: [
+              Container(
+                color: Colors.red,
+                height: 100,
+                child: Row(
+                  children: [],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
