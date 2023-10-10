@@ -45,25 +45,25 @@ class _MainScreenState extends State<MainScreen> {
             children: [
               Container(
                 color: Colors.red,
-                height: 100,
+                height: height * 0.11,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.05),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: const Text(
+                        child: Text(
                           'MyOnlineShop',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 30,
+                              fontSize: width * 0.07,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
                       Container(
-                        child: const Icon(
+                        child: Icon(
                           Icons.menu,
-                          size: 30,
+                          size: width * 0.07,
                           color: Colors.white,
                         ),
                       ),
