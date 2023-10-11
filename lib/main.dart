@@ -30,7 +30,16 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin<MainScreen> {
+  late TabController myController;
+  int tabIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    myController = TabController(length: 3, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -75,18 +84,76 @@ class _MainScreenState extends State<MainScreen> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.05),
                 margin: EdgeInsets.symmetric(horizontal: width * 0.05),
-                constraints: BoxConstraints(minHeight: height * 0.05),
+                constraints: BoxConstraints(minHeight: height * 0.07),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     color: Colors.white30),
-                child: TextField(
-                  cursorColor: Colors.black,
+                child: Directionality(
                   textDirection: TextDirection.rtl,
-                  decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide:
-                              const BorderSide(color: Colors.transparent))),
+                  child: TextField(
+                    keyboardType: TextInputType.name,
+                    cursorColor: Colors.white38,
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.search,
+                          size: width * 0.08,
+                        ),
+                        hintStyle: const TextStyle(color: Colors.black87),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide:
+                                const BorderSide(color: Colors.transparent)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide:
+                                const BorderSide(color: Colors.transparent))),
+                  ),
+                ),
+              ),
+              Container(
+                constraints: BoxConstraints(minHeight: height * 0.1),
+                margin: EdgeInsets.only(
+                    top: height * 0.03,
+                    right: width * 0.05,
+                    left: width * 0.05),
+                child: TabBar(
+                  onTap: (value) {
+                    setState(() {
+                      tabIndex = myController.index;
+                    });
+                  },
+                  indicatorColor: Colors.white,
+                  controller: myController,
+                  tabs: const [
+                    Icon(
+                      Icons.image,
+                      color: Colors.white,
+                    ),
+                    Icon(
+                      Icons.podcasts,
+                      color: Colors.white,
+                    ),
+                    Icon(
+                      Icons.calculate,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: height * 0.5,
+                // color: Colors.red,
+                child: TabBarView(
+                  controller: myController,
+                  children: [
+                    Container(
+                      color: Colors.red,
+                    ),
+                    Container(
+                      color: Colors.green,
+                    ),
+                    Container(color: Colors.yellow),
+                  ],
                 ),
               ),
             ],
