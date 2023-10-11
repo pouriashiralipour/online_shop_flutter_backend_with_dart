@@ -30,14 +30,10 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen>
-    with SingleTickerProviderStateMixin<MainScreen> {
-  late TabController myController;
-  int tabIndex = 0;
+class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    myController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -111,51 +107,24 @@ class _MainScreenState extends State<MainScreen>
                 ),
               ),
               Container(
+                height: height * 0.5,
                 constraints: BoxConstraints(minHeight: height * 0.1),
                 margin: EdgeInsets.only(
                     top: height * 0.03,
                     right: width * 0.05,
                     left: width * 0.05),
-                child: TabBar(
-                  onTap: (value) {
-                    setState(() {
-                      tabIndex = myController.index;
-                    });
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.all(height * 0.005),
+                      width: width * 0.15,
+                      height: height * 0.15,
+                      color: index.isEven ? Colors.red : Colors.yellow,
+                    );
                   },
-                  indicatorColor: Colors.white,
-                  controller: myController,
-                  tabs: const [
-                    Icon(
-                      Icons.image,
-                      color: Colors.white,
-                    ),
-                    Icon(
-                      Icons.podcasts,
-                      color: Colors.white,
-                    ),
-                    Icon(
-                      Icons.calculate,
-                      color: Colors.white,
-                    ),
-                  ],
+                  itemCount: 7,
                 ),
-              ),
-              Container(
-                height: height * 0.5,
-                // color: Colors.red,
-                child: TabBarView(
-                  controller: myController,
-                  children: [
-                    Container(
-                      color: Colors.red,
-                    ),
-                    Container(
-                      color: Colors.green,
-                    ),
-                    Container(color: Colors.yellow),
-                  ],
-                ),
-              ),
+              )
             ],
           ),
         ),
