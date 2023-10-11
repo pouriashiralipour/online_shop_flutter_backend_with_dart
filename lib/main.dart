@@ -31,6 +31,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  int activeTab = 0;
   @override
   void initState() {
     super.initState();
@@ -107,19 +108,43 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               Container(
-                height: height * 0.5,
-                constraints: BoxConstraints(minHeight: height * 0.1),
+                height: height * 0.06,
+                constraints: BoxConstraints(minHeight: height * 0.06),
                 margin: EdgeInsets.only(
                     top: height * 0.03,
                     right: width * 0.05,
                     left: width * 0.05),
                 child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.all(height * 0.005),
-                      width: width * 0.15,
-                      height: height * 0.15,
-                      color: index.isEven ? Colors.red : Colors.yellow,
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          activeTab = index;
+                        });
+                      },
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      child: Container(
+                        margin: EdgeInsets.all(height * 0.005),
+                        width: width * 0.2,
+                        height: height * 0.12,
+                        decoration: BoxDecoration(
+                            color: activeTab == index
+                                ? Colors.white30
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(height * 0.03)),
+                        child: Center(
+                          child: Text(
+                            index == 0 ? 'همه' : "دسته$index",
+                            style: TextStyle(
+                                color: activeTab == index
+                                    ? Colors.black
+                                    : Colors.white,
+                                fontSize: width * 0.05),
+                          ),
+                        ),
+                      ),
                     );
                   },
                   itemCount: 7,
