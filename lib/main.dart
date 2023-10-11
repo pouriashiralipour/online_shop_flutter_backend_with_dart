@@ -36,15 +36,16 @@ class _MainScreenState extends State<MainScreen> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: const Color(0xFF2b478a),
       body: SafeArea(
         child: Container(
           width: width,
           height: height,
-          color: Colors.white,
+          // color: Colors.white,
           child: ListView(
             children: [
               Container(
-                color: Colors.red,
+                // color: Colors.red,
                 height: height * 0.11,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.05),
@@ -69,6 +70,23 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ],
                   ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                margin: EdgeInsets.symmetric(horizontal: width * 0.05),
+                constraints: BoxConstraints(minHeight: height * 0.05),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white30),
+                child: TextField(
+                  cursorColor: Colors.black,
+                  textDirection: TextDirection.rtl,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide:
+                              const BorderSide(color: Colors.transparent))),
                 ),
               ),
             ],
