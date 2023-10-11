@@ -159,8 +159,50 @@ class _MainScreenState extends State<MainScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(width * 0.1),
-                      topRight: Radius.circular(width * 0.1)),
+                      topLeft: Radius.circular(width * 0.08),
+                      topRight: Radius.circular(width * 0.08)),
+                ),
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: width * 0.5,
+                      height: height * 0.17,
+                      margin: EdgeInsets.only(
+                          top: height * 0.03,
+                          left: width * 0.06,
+                          right: width * 0.06),
+                      decoration: BoxDecoration(
+                          color: index.isEven
+                              ? Colors.red[200]
+                              : const Color(0xFF7c9998),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black38,
+                              blurRadius: width * 0.035,
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(width * 0.08)),
+                      child: Stack(
+                        children: [
+                          Container(
+                              margin: EdgeInsets.only(
+                                right: width * 0.008,
+                              ),
+                              // top: width * 0.005,
+                              // bottom: width * 0.005),
+                              width: width,
+                              height: height,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(width * 0.08),
+                                    bottomRight: Radius.circular(width * 0.08)),
+                              )),
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: 7,
                 ),
               ),
             ],
