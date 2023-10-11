@@ -39,11 +39,12 @@ class _MainScreenState extends State<MainScreen> {
                       children: [
                         Container(
                           child: Text(
-                            'MyOnlineShop',
+                            'فروشگاه من',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: width * 0.07,
-                                fontWeight: FontWeight.bold),
+                                fontFamily: 'BYekan',
+                                fontWeight: FontWeight.w700),
                           ),
                         ),
                         Container(
@@ -118,6 +119,7 @@ class _MainScreenState extends State<MainScreen> {
                             child: Text(
                               index == 0 ? 'همه' : "دسته$index",
                               style: TextStyle(
+                                  fontFamily: 'BYekan',
                                   color: activeTab == index
                                       ? Colors.black54
                                       : Colors.white,
@@ -202,6 +204,7 @@ class _MainScreenState extends State<MainScreen> {
                                             child: Text(
                                           'پیراهن$index',
                                           style: TextStyle(
+                                              fontFamily: 'BYekan',
                                               fontSize: width * 0.05,
                                               color: const Color(0xFF2b478a)),
                                         )),
@@ -209,13 +212,15 @@ class _MainScreenState extends State<MainScreen> {
                                           child: Text(
                                             'دسته بندی$index',
                                             style: TextStyle(
+                                                fontFamily: 'BYekan',
                                                 fontSize: width * 0.05),
                                           ),
                                         ),
                                         Container(
                                           child: Text(
-                                            '85\$',
+                                            '85000',
                                             style: TextStyle(
+                                                fontFamily: 'BYekan',
                                                 fontSize: width * 0.05,
                                                 color: index.isEven
                                                     ? Colors.red[200]
