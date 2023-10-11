@@ -149,7 +149,20 @@ class _MainScreenState extends State<MainScreen> {
                   },
                   itemCount: 7,
                 ),
-              )
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: height * 0.03,
+                    right: width * 0.05,
+                    left: width * 0.05),
+                height: height * 0.7,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(width * 0.1),
+                      topRight: Radius.circular(width * 0.1)),
+                ),
+              ),
             ],
           ),
         ),
