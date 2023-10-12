@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop_dart/pages/models/item_details.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key, required this.title});
@@ -146,94 +147,103 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   child: ListView.builder(
                     itemBuilder: (context, index) {
-                      return Container(
-                        width: width * 0.5,
-                        height: height * 0.17,
-                        margin: EdgeInsets.only(
-                            top: height * 0.03,
-                            left: width * 0.06,
-                            right: width * 0.06),
-                        decoration: BoxDecoration(
-                            color: index.isEven
-                                ? Colors.red[200]
-                                : const Color(0xFF7c9998),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black38,
-                                blurRadius: width * 0.035,
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(width * 0.08)),
-                        child: Stack(
-                          children: [
-                            Container(
-                                margin: EdgeInsets.only(
-                                  right: width * 0.008,
-                                ),
-                                // top: width * 0.005,
-                                // bottom: width * 0.005),
-                                width: width,
-                                height: height,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(width * 0.08),
-                                      bottomRight:
-                                          Radius.circular(width * 0.08)),
-                                )),
-                            Container(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Container(
-                                    width: width * 0.25,
-                                    height: height * 0.15,
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: AssetImage(
-                                                'assets/images/shirt.jpg'))),
+                      return InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const DetailsScreen(),
+                          ));
+                        },
+                        child: Container(
+                          width: width * 0.5,
+                          height: height * 0.17,
+                          margin: EdgeInsets.only(
+                              top: height * 0.03,
+                              left: width * 0.06,
+                              right: width * 0.06),
+                          decoration: BoxDecoration(
+                              color: index.isEven
+                                  ? Colors.red[200]
+                                  : const Color(0xFF7c9998),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black38,
+                                  blurRadius: width * 0.035,
+                                )
+                              ],
+                              borderRadius:
+                                  BorderRadius.circular(width * 0.08)),
+                          child: Stack(
+                            children: [
+                              Container(
+                                  margin: EdgeInsets.only(
+                                    right: width * 0.008,
                                   ),
-                                  Container(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Container(
-                                            child: Text(
-                                          'پیراهن$index',
-                                          style: TextStyle(
-                                              fontFamily: 'BYekan',
-                                              fontSize: width * 0.05,
-                                              color: const Color(0xFF2b478a)),
-                                        )),
-                                        Container(
-                                          child: Text(
-                                            'دسته بندی$index',
-                                            style: TextStyle(
-                                                fontFamily: 'BYekan',
-                                                fontSize: width * 0.05),
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Text(
-                                            '85000',
+                                  // top: width * 0.005,
+                                  // bottom: width * 0.005),
+                                  width: width,
+                                  height: height,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(width * 0.08),
+                                        bottomRight:
+                                            Radius.circular(width * 0.08)),
+                                  )),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Container(
+                                      width: width * 0.25,
+                                      height: height * 0.15,
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: AssetImage(
+                                                  'assets/images/shirt.jpg'))),
+                                    ),
+                                    Container(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Container(
+                                              child: Text(
+                                            'پیراهن$index',
                                             style: TextStyle(
                                                 fontFamily: 'BYekan',
                                                 fontSize: width * 0.05,
-                                                color: index.isEven
-                                                    ? Colors.red[200]
-                                                    : const Color(0xFF7c9998)),
+                                                color: const Color(0xFF2b478a)),
+                                          )),
+                                          Container(
+                                            child: Text(
+                                              'دسته بندی$index',
+                                              style: TextStyle(
+                                                  fontFamily: 'BYekan',
+                                                  fontSize: width * 0.05),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                          Container(
+                                            child: Text(
+                                              '85000',
+                                              style: TextStyle(
+                                                  fontFamily: 'BYekan',
+                                                  fontSize: width * 0.05,
+                                                  color: index.isEven
+                                                      ? Colors.red[200]
+                                                      : const Color(
+                                                          0xFF7c9998)),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     },
