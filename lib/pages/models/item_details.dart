@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({super.key});
+  String productName;
+  String productCategory;
+  String productPrice;
+  DetailsScreen(
+      {super.key,
+      required this.productName,
+      required this.productCategory,
+      required this.productPrice});
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -36,7 +43,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   height: height * 0.3,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: NetworkImage(imageUrl[active]))),
+                    image: NetworkImage(imageUrl[active]),
+                  )),
                 ),
               ),
               Padding(
@@ -66,9 +74,34 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(
+                          top: height * 0.1,
+                          left: width * 0.08,
+                          right: width * 0.08,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(widget.productCategory,
+                                style: TextStyle(
+                                    color: const Color(0xFF2b478a),
+                                    fontFamily: "BYekan",
+                                    fontSize: width * 0.04)),
+                            Text(
+                              widget.productName,
+                              style: TextStyle(
+                                fontFamily: "BYekan",
+                                fontSize: width * 0.04,
+                                color: const Color(0xFF2b478a),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
                             left: width * 0.08,
                             right: width * 0.08,
-                            top: height * 0.12),
+                            top: height * 0.02),
                         child: Text(
                           "Ullamco ullamco incididunt minim. Commodo sit eu sint veniam ullamco proident minim sunt. Deserunt esse exercitation sit nulla ad commodo labore nisi ut duis exercitation irure. Adipisicing eu ullamco dolore eiusmod exercitation aliquip duis fugiat. Dolor culpa laborum proident nostrud aliqua nisi labore adipisicing voluptate.",
                           style: TextStyle(
@@ -104,7 +137,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        '80000',
+                        widget.productPrice,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontFamily: "BYekan",

@@ -142,7 +142,9 @@ class _MainScreenState extends State<MainScreen> {
                         },
                         splashColor: Colors.transparent,
                         highlightColor: Colors.transparent,
-                        child: Container(
+                        child: AnimatedContainer(
+                          curve: Curves.ease,
+                          duration: const Duration(milliseconds: 600),
                           margin: EdgeInsets.all(height * 0.005),
                           width: width * 0.2,
                           height: height * 0.12,
@@ -154,7 +156,7 @@ class _MainScreenState extends State<MainScreen> {
                                   BorderRadius.circular(height * 0.03)),
                           child: Center(
                             child: Text(
-                              index == 0 ? 'همه' : "دسته$index",
+                              index == 0 ? 'همه' : "دسته $index",
                               style: TextStyle(
                                   fontFamily: 'BYekan',
                                   color: activeTab == index
@@ -204,7 +206,11 @@ class _MainScreenState extends State<MainScreen> {
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const DetailsScreen(),
+                              builder: (context) => DetailsScreen(
+                                productName: "Shirt$index",
+                                productCategory: "Category$index",
+                                productPrice: "80\$",
+                              ),
                             ));
                           },
                           child: Stack(
