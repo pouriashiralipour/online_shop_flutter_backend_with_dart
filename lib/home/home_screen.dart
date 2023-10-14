@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop_dart/pages/cart/cart.dart';
+import 'package:online_shop_dart/pages/models/info.dart';
 import 'package:online_shop_dart/pages/models/item_details.dart';
+import 'package:online_shop_dart/pages/models/profile.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key, required this.title});
@@ -9,6 +12,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  GlobalKey<ScaffoldState> state = GlobalKey();
+  bool isOpenDrawer = false;
   int activeTab = 0;
   @override
   void initState() {
@@ -20,17 +25,39 @@ class _MainScreenState extends State<MainScreen> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
+      key: state,
+      endDrawer: Container(
+        width: width * 0.3,
+        decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 1),
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            bottomLeft: Radius.circular(20),
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            drawerItem(1, height, width, Icons.person_2_outlined),
+            drawerItem(2, height, width, Icons.shopping_cart_outlined),
+            drawerItem(3, height, width, Icons.info_outline),
+          ],
+        ),
+      ),
       backgroundColor: const Color(0xFF2b478a),
       body: SafeArea(
         child: Directionality(
           textDirection: TextDirection.rtl,
-          child: Container(
+          child: SizedBox(
             width: width,
             height: height,
             // color: Colors.white,
             child: ListView(
               children: [
-                Container(
+                SizedBox(
                   // color: Colors.red,
                   height: height * 0.11,
                   child: Padding(
@@ -48,11 +75,20 @@ class _MainScreenState extends State<MainScreen> {
                                 fontWeight: FontWeight.w700),
                           ),
                         ),
-                        Container(
-                          child: Icon(
-                            Icons.menu,
-                            size: width * 0.07,
-                            color: Colors.white,
+                        InkWell(
+                          onTap: () {
+                            if (state.currentState!.isDrawerOpen) {
+                              Navigator.of(context).pop();
+                            } else {
+                              state.currentState!.openEndDrawer();
+                            }
+                          },
+                          child: Container(
+                            child: Icon(
+                              Icons.menu,
+                              size: width * 0.07,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
@@ -252,6 +288,43 @@ class _MainScreenState extends State<MainScreen> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget drawerItem(int id, var height, var width, IconData icon) {
+    return InkWell(
+      onTap: () {
+        if (id == 1) {
+          Navigator.of(context).pop();
+
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const ProfilePage(),
+          ));
+        } else if (id == 2) {
+          Navigator.of(context).pop();
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const Cart(),
+          ));
+        } else {
+          Navigator.of(context).pop();
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const InfoPage(),
+          ));
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.all(width * 0.02),
+        margin: EdgeInsets.only(bottom: height * 0.05),
+        decoration: const BoxDecoration(
+          color: Color(0xFF2b478a),
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          icon,
+          color: Colors.white,
+          size: width * 0.08,
         ),
       ),
     );
