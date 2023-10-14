@@ -147,31 +147,30 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   child: ListView.builder(
                     itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const DetailsScreen(),
-                          ));
-                        },
-                        child: Container(
-                          width: width * 0.5,
-                          height: height * 0.17,
-                          margin: EdgeInsets.only(
-                              top: height * 0.03,
-                              left: width * 0.06,
-                              right: width * 0.06),
-                          decoration: BoxDecoration(
-                              color: index.isEven
-                                  ? Colors.red[200]
-                                  : const Color(0xFF7c9998),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black38,
-                                  blurRadius: width * 0.035,
-                                )
-                              ],
-                              borderRadius:
-                                  BorderRadius.circular(width * 0.08)),
+                      return Container(
+                        width: width * 0.5,
+                        height: height * 0.17,
+                        margin: EdgeInsets.only(
+                            top: height * 0.03,
+                            left: width * 0.06,
+                            right: width * 0.06),
+                        decoration: BoxDecoration(
+                            color: index.isEven
+                                ? Colors.red[200]
+                                : const Color(0xFF7c9998),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black38,
+                                blurRadius: width * 0.035,
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(width * 0.08)),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const DetailsScreen(),
+                            ));
+                          },
                           child: Stack(
                             children: [
                               Container(
