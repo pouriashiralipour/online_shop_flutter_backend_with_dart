@@ -35,24 +35,27 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Align(
               alignment: Alignment.topCenter,
-              child: Container(
-                margin: EdgeInsets.only(top: height * 0.15),
-                width: width * 0.25,
-                height: height * 0.13,
-                decoration: BoxDecoration(
-                  border:
-                      Border.all(color: Colors.blueGrey.shade800, width: 2.5),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color(0xFF7c9998),
-                      blurRadius: 20,
-                    )
-                  ],
-                  shape: BoxShape.circle,
-                  color: Colors.indigoAccent,
-                  image: const DecorationImage(
-                      image: AssetImage("assets/images/profile.JPG"),
-                      fit: BoxFit.cover),
+              child: Hero(
+                tag: "profilePicture",
+                child: Container(
+                  margin: EdgeInsets.only(top: height * 0.15),
+                  width: width * 0.25,
+                  height: height * 0.13,
+                  decoration: BoxDecoration(
+                    border:
+                        Border.all(color: Colors.blueGrey.shade800, width: 2.5),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0xFF7c9998),
+                        blurRadius: 20,
+                      )
+                    ],
+                    shape: BoxShape.circle,
+                    color: Colors.indigoAccent,
+                    image: const DecorationImage(
+                        image: AssetImage("assets/images/profile.JPG"),
+                        fit: BoxFit.cover),
+                  ),
                 ),
               ),
             ),

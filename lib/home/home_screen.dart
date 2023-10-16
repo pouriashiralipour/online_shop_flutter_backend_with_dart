@@ -301,38 +301,61 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget drawerItem(int id, var height, var width, IconData icon) {
     return InkWell(
-      onTap: () {
-        if (id == 1) {
-          Navigator.of(context).pop();
+        onTap: () {
+          if (id == 1) {
+            Navigator.of(context).pop();
 
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const ProfilePage(),
-          ));
-        } else if (id == 2) {
-          Navigator.of(context).pop();
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const Cart(),
-          ));
-        } else {
-          Navigator.of(context).pop();
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const InfoPage(),
-          ));
-        }
-      },
-      child: Container(
-        padding: EdgeInsets.all(width * 0.02),
-        margin: EdgeInsets.only(bottom: height * 0.05),
-        decoration: const BoxDecoration(
-          color: Color(0xFF2b478a),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(
-          icon,
-          color: Colors.white,
-          size: width * 0.08,
-        ),
-      ),
-    );
+            Navigator.of(context).push(PageRouteBuilder(
+              transitionDuration: const Duration(milliseconds: 600),
+              pageBuilder: (context, animation, secondaryAnimation) =>
+                  const ProfilePage(),
+            ));
+          } else if (id == 2) {
+            Navigator.of(context).pop();
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const Cart(),
+            ));
+          } else {
+            Navigator.of(context).pop();
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const InfoPage(),
+            ));
+          }
+        },
+        child: id != 1
+            ? Container(
+                padding: EdgeInsets.all(width * 0.02),
+                margin: EdgeInsets.only(bottom: height * 0.05),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF2b478a),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                  size: width * 0.08,
+                ),
+              )
+            : Hero(
+                tag: "profilePicture",
+                child: Container(
+                  height: height * 0.06,
+                  width: height * 0.06,
+                  padding: EdgeInsets.all(width * 0.02),
+                  margin: EdgeInsets.only(bottom: height * 0.05),
+                  decoration: const BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFF2b478a),
+                          blurRadius: 15,
+                        )
+                      ],
+                      color: Color(0xFF2b478a),
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: AssetImage("assets/images/profile.JPG"),
+                          fit: BoxFit.cover)),
+                ),
+              ));
   }
 }
