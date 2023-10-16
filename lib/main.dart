@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop_dart/home/home_screen.dart';
+import 'package:online_shop_dart/pages/models/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 6, 106, 213)),
         useMaterial3: true,
       ),
-      home: const MainScreen(title: 'Online Shop HomePage'),
+      home: const SplashScreen(),
     );
   }
 }
