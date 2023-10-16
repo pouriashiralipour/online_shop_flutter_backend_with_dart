@@ -207,9 +207,9 @@ class _MainScreenState extends State<MainScreen> {
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => DetailsScreen(
-                                productName: "Shirt$index",
-                                productCategory: "Category$index",
-                                productPrice: "80\$",
+                                productName: "پیراهن $index",
+                                productCategory: "دسته بندی $index",
+                                productPrice: "80,000",
                               ),
                             ));
                           },
