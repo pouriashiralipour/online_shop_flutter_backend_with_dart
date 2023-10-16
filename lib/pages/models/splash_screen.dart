@@ -13,11 +13,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 3))
+    Future.delayed(const Duration(seconds: 3))
         .then((value) => Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                   builder: (context) =>
-                      MainScreen(title: 'Online Shop HomePage')),
+                      const MainScreen(title: 'Online Shop HomePage')),
             ));
   }
 
