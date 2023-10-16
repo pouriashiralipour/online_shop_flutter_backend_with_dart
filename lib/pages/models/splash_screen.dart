@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop_dart/home/home_screen.dart';
+import 'package:online_shop_dart/pages/models/onboard.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,9 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 3))
         .then((value) => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                  builder: (context) =>
-                      const MainScreen(title: 'Online Shop HomePage')),
+              MaterialPageRoute(builder: (context) => const OnboardScreen()),
             ));
   }
 
