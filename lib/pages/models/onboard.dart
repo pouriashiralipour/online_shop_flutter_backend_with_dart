@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:online_shop_dart/home/home_screen.dart';
+import 'package:online_shop_dart/pages/authentication/signup_signin.dart';
 import 'package:online_shop_dart/pages/models/splash_screen.dart';
 
 class OnboardScreen extends StatefulWidget {
@@ -57,9 +58,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
               style: TextStyle(color: Colors.white, fontFamily: "BYekan")),
           onTapDoneButton: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const MainScreen(
-                title: "OnlineShop",
-              ),
+              builder: (context) => const SignUpSignInPage(),
             ));
           },
         ),
